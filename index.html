@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Cupid Mission 💘</title>
+  </head>
+
+  <body>
+    <!-- MUSIC -->
+    <audio id="bg-music" loop>
+      <source src="bg-music.mp3" type="audio/mpeg" />
+    </audio>
+    <button class="mute-btn js-mute-btn" aria-label="Mute music">🔊</button>
+
+    <!-- SCREEN 1: INTRO -->
+    <div class="screen intro-screen container">
+      <img src="cupid.png" alt="Cupid" class="cupid-hero-img" />
+      <div class="intro-overlay">
+        <h2>Hey Jephline 💘</h2>
+        <p>I’m Cupid… and I lost my bow 🏹</p>
+        <p>Can you help me deliver love letters? 💌</p>
+        <button class="btn js-start-btn">Help Cupid 💘</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: MATCH -->
+    <div class="screen match-screen container">
+      <div class="match-inner">
+        <h2>Match the lovers 💕</h2>
+        <p class="subtext">
+          I need help finding the right couples… there are <b>2</b> correct matches 👀
+        </p>
+
+        <div class="progress">
+          Correct matches: <span class="js-correct-count">0</span>/2
+        </div>
+
+        <div class="couple-grid">
+          <button class="couple-card js-match-choice" data-correct="false">
+            <img src="couple-1-jephline-ex.png" alt="Jephline + Your Ex" />
+            <div class="couple-label">Jephline + Your Ex 💔</div>
+          </button>
+
+          <button class="couple-card js-match-choice" data-correct="true">
+            <img src="couple-2-ceoalbin-doctoryou.png" alt="CEO Albin + Doctor You" />
+            <div class="couple-label">CEO Albin 🕴️ + Doctor You 🩺</div>
+          </button>
+
+          <button class="couple-card js-match-choice" data-correct="false">
+            <img src="couple-3-albin-deepika.png" alt="Albin + Deepika" />
+            <div class="couple-label">Albin + Deepika 🎬</div>
+          </button>
+
+          <button class="couple-card js-match-choice" data-correct="true">
+            <img
+              src="couple-4-footballer-albin-actress-jephline.png"
+              alt="Footballer Albin + Actress Jephline"
+            />
+            <div class="couple-label">Footballer Albin ⚽ + Actress Jephline 🎭</div>
+          </button>
+
+          <button class="couple-card js-match-choice" data-correct="false">
+            <img src="couple-5-rihanna-chrisbrown.png" alt="Rihanna + Chris Brown" />
+            <div class="couple-label">Rihanna + Chris Brown ❌</div>
+          </button>
+
+          <button class="couple-card js-match-choice" data-correct="false">
+            <img src="couple-6-binisha-athul.png" alt="Binisha + Athul" />
+            <div class="couple-label">Binisha + Athul 🙅‍♂️</div>
+          </button>
+        </div>
+
+        <p class="message js-match-msg"></p>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: LOVE CODE (PIN) -->
+    <div class="screen pin-screen container">
+      <div class="pin-inner">
+        <h2>Love Code 🔐💘</h2>
+        <p class="subtext">
+  Cupid says there’s a code to unlock the next mission…<br /><br />
+  <b>Clue:</b><br />
+  I’m thinking of a number made from two birthdays.<br />
+  First comes the day summer gets to claim you,<br />
+  then comes the day spring decided I was born.
+</p>
+
+
+        <div class="pin-row">
+          <input
+            class="pin-input js-pin-input"
+            type="text"
+            inputmode="numeric"
+            maxlength="4"
+            placeholder="____"
+            aria-label="Enter 4 digit code"
+          />
+          <button class="btn js-pin-submit">Unlock 💖</button>
+        </div>
+
+        <p class="pin-msg js-pin-msg"></p>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: BOW -->
+    <div class="screen bow-screen container">
+      <div class="bow-inner">
+        <h2>Find Cupid’s Bow 🏹</h2>
+        <p class="subtext">
+          If you help me find the bow, you’ll get a special letter that has your name on it 💌✨
+        </p>
+
+        <div class="choice-grid">
+          <button class="btn js-bow-choice" data-correct="false">Next to the shield 🛡️</button>
+          <button class="btn js-bow-choice" data-correct="true">Next to the harp 🎶</button>
+          <button class="btn js-bow-choice" data-correct="false">Inside the flower bed 🌸</button>
+        </div>
+
+        <p class="bow-msg js-bow-msg"></p>
+      </div>
+    </div>
+
+    <!-- SCREEN 5: FINAL -->
+    <div class="screen final-screen container">
+      <div class="final-wrap">
+        <h2 class="question">Mission complete 💘</h2>
+        <p class="subtext">You earned a special letter… open it 👀💌</p>
+
+        <button class="btn js-open-letter-btn">Open letter 💌</button>
+
+        <!-- Valentine question appears ONLY after closing letter -->
+        <div class="valentine-area js-valentine-area">
+          <h2 class="question">Will you be my Valentine? 💖</h2>
+          <div class="button-container">
+            <button class="yes-btn btn js-yes-btn">Yes 💘</button>
+            <button class="no-btn btn js-no-btn">No 💔</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FULLSCREEN LETTER MODAL (HIDDEN BY DEFAULT) -->
+    <div class="letter-modal js-letter-modal" aria-hidden="true">
+      <div class="letter-backdrop js-letter-close"></div>
+
+      <div class="letter-panel" role="dialog" aria-modal="true">
+        <button class="letter-close js-letter-close" aria-label="Close">✕</button>
+
+        <div class="letter-tabs">
+          <button class="btn small-btn js-tab-image">Letter image 🖼️</button>
+          <button class="btn small-btn js-tab-text">Text version ✍️</button>
+        </div>
+
+        <div class="letter-body">
+          <!-- IMAGE VIEW -->
+          <div class="letter-view letter-view-image js-letter-image-view">
+            <img class="letter-img" src="letter-from-albin.png" alt="Letter from Albin" />
+          </div>
+
+          <!-- TEXT VIEW -->
+          <div class="letter-view letter-view-text js-letter-text-view">
+            <div class="letter-text-card">
+              <h3>To the love of my life, Jephline,</h3>
+
+              <p>
+                I know I’m not there in person to give you this letter, but I hope Cupid makes sure it reaches you.
+                Even though we’re miles apart, I wanted to make sure you feel just how special you are to me during this month of love.
+              </p>
+
+              <p>
+                From the moment I met you, I felt a strong connection, like the universe was gently pushing us toward each other.
+                Maybe it was Cupid and his arrow, maybe it was the stars above, but I’m so grateful they led me to someone so truly out of this world.
+                And even if fate brought us together, it’s you who made me fall in love.
+              </p>
+
+              <p>
+                I feel the magic most in the little things, your “good morning love” messages and the way you always wish me the best for the day.
+                They might seem small, but they mean more to me than you know.
+                And whenever I’m having a bad day or not feeling myself, just hearing your voice or seeing you makes everything fade away.
+                You calm me, ground me, and remind me that everything will be okay.
+                Your love has shown me what it truly means to be cherished, and I’ll always appreciate that.
+              </p>
+
+              <p>
+                This Valentine’s month, I want you to know that you are my safe place, my happiness, and my favourite person.
+                Every day with you makes my heart miss you more and love you deeper.
+              </p>
+
+              <p><b>So today, and always, I ask you…</b></p>
+              <p class="big-love">❤️</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-container container">
+      <video class="gif-result" src="Love me.mp4" autoplay loop></video>
+      <h2>I knew it 😍💖</h2>
+    </div>
+
+    <!-- LOADER -->
+    <div class="cssload-main">
+      <div class="cssload-heart">
+        <span class="cssload-heartL"></span>
+        <span class="cssload-heartR"></span>
+        <span class="cssload-square"></span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
